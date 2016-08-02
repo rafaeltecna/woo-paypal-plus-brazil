@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Woo Paypal Plus Brazil 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-paypal-plus-"
 "brazil\n"
-"POT-Creation-Date: 2016-07-31 03:19-0300\n"
-"PO-Revision-Date: 2016-07-31 03:19-0300\n"
+"POT-Creation-Date: 2016-08-02 18:22-0300\n"
+"PO-Revision-Date: 2016-08-02 18:23-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -156,8 +156,8 @@ msgid "This controls the title which the user sees during checkout."
 msgstr "Isso controla o título que o usuário verá durante o checkout."
 
 #: includes/class-wc-paypal-plus-brazil-gateway.php:138
-msgid "PayPal Plus"
-msgstr "PayPal Plus"
+msgid "Credit card"
+msgstr "Cartão de crédito"
 
 #: includes/class-wc-paypal-plus-brazil-gateway.php:141
 msgid "Description"
@@ -168,8 +168,8 @@ msgid "This controls the description which the user sees during checkout."
 msgstr "Isso controla a descrição que o usuário verá durante o checkout."
 
 #: includes/class-wc-paypal-plus-brazil-gateway.php:144
-msgid "Pay via PayPal Plus"
-msgstr "Pagar por PayPal Plus"
+msgid "Use your credit card to checkout."
+msgstr "Utilize o seu cartão de crédito para efetuar a sua compra."
 
 #: includes/class-wc-paypal-plus-brazil-gateway.php:147
 msgid "PayPal Plus Sandbox"
@@ -252,11 +252,7 @@ msgstr "Registra eventos do PayPal Plus Brasil, como requisições da API, em %s
 msgid "Missing PayPal payment data."
 msgstr "Faltando informações de pagamento do PayPal."
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:280
-msgid "Payment received and confirmed by PayPal."
-msgstr "Pagamento recebido e confirmado pelo PayPal."
-
-#: includes/class-wc-paypal-plus-brazil-gateway.php:283
+#: includes/class-wc-paypal-plus-brazil-gateway.php:282
 msgid "Could not execute the payment."
 msgstr "Não foi possível executar o pagamento."
 
@@ -302,6 +298,15 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://eliasjrweb.com/"
 msgstr ""
+
+#~ msgid "PayPal Plus"
+#~ msgstr "PayPal Plus"
+
+#~ msgid "Pay via PayPal Plus"
+#~ msgstr "Pagar por PayPal Plus"
+
+#~ msgid "Payment received and confirmed by PayPal."
+#~ msgstr "Pagamento recebido e confirmado pelo PayPal."
 
 #~ msgid "You should inform your email address."
 #~ msgstr "Você deve informar o seu endereço de email."

@@ -135,13 +135,13 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 				'type'        => 'text',
 				'description' => __( 'This controls the title which the user sees during checkout.', 'woo-paypal-plus-brazil' ),
 				'desc_tip'    => true,
-				'default'     => __( 'PayPal Plus', 'woo-paypal-plus-brazil' ),
+				'default'     => __( 'Credit card', 'woo-paypal-plus-brazil' ),
 			),
 			'description'           => array(
 				'title'       => __( 'Description', 'woo-paypal-plus-brazil' ),
 				'type'        => 'textarea',
 				'description' => __( 'This controls the description which the user sees during checkout.', 'woo-paypal-plus-brazil' ),
-				'default'     => __( 'Pay via PayPal Plus', 'woo-paypal-plus-brazil' ),
+				'default'     => __( 'Use your credit card to checkout.', 'woo-paypal-plus-brazil' ),
 			),
 			'sandbox'               => array(
 				'title'       => __( 'PayPal Plus Sandbox', 'woo-paypal-plus-brazil' ),
