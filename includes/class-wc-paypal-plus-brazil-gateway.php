@@ -522,4 +522,12 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 		}
 	}
 
+	/**
+	 * Return the name of the option in the WP DB.
+	 * @return string
+	 */
+	public function get_option_key() {
+		return $this->plugin_id . $this->id . '_settings';
+	}
+
 }
