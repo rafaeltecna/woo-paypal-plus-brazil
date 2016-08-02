@@ -133,6 +133,13 @@ class WC_PayPal_Plus_Brazil_API {
 	 * @return null|string
 	 */
 	public function get_access_token() {
+		$access_token = get_transient( 'woo_paypal_plus_brazil_access_token' );
+
+		// Return the saved access token if available.
+		if ( false !== $access_token ) {
+			return $access_token;
+		}
+
 		$headers  = array( 'Authorization' => 'Basic ' . $this->get_basic_auth() );
 		$data     = array( 'grant_type' => 'client_credentials' );
 		$response = $this->do_request( $this->get_token_url(), 'POST', $data, $headers );
@@ -147,8 +154,13 @@ class WC_PayPal_Plus_Brazil_API {
 
 			if ( 200 == $response['response']['code'] ) {
 				$this->gateway->log( 'Success getting access token.' );
+				$access_token = $response_body['access_token'];
+				$expires_in = $response_body['expires_in'] - 50; // -50s to make sure that will be always fresh.
 
-				return $response_body['access_token'];
+				// Save transient.
+				set_transient( 'woo_paypal_plus_brazil_access_toke', $access_token, $expires_in );
+
+				return $access_token;
 			} else if ( 401 === $response['response']['code'] ) {
 				$this->gateway->log( 'Failed to authenticate with the cretentials.' );
 			} else {
