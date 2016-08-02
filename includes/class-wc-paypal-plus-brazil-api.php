@@ -155,10 +155,10 @@ class WC_PayPal_Plus_Brazil_API {
 			if ( 200 == $response['response']['code'] ) {
 				$this->gateway->log( 'Success getting access token.' );
 				$access_token = $response_body['access_token'];
-				$expires_in = $response_body['expires_in'] - 50; // -50s to make sure that will be always fresh.
+				$expires_in   = $response_body['expires_in'] - 50; // -50s to make sure that will be always fresh.
 
 				// Save transient.
-				set_transient( 'woo_paypal_plus_brazil_access_toke', $access_token, $expires_in );
+				set_transient( 'woo_paypal_plus_brazil_access_token', $access_token, $expires_in );
 
 				return $access_token;
 			} else if ( 401 === $response['response']['code'] ) {
