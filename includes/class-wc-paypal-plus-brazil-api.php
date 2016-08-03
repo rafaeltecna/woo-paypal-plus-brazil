@@ -192,7 +192,11 @@ class WC_PayPal_Plus_Brazil_API {
 				array(
 					'amount'          => array(
 						'currency' => 'BRL',
-						'total'    => $this->money_format( $order ? $order->get_total() : $cart->cart_contents_total ),
+						'total'    => $this->money_format( $order ? $order->get_total() : $cart->total ),
+						'details'  => array(
+							'subtotal' => $this->money_format( $order ? $order->get_subtotal() - $order->get_total_discount() : $cart->subtotal - $cart->discount_cart ),
+							'shipping' => $this->money_format( $order ? $order->order_shipping : $cart->shipping_total ),
+						),
 					),
 					'payment_options' => array(
 						'allowed_payment_method' => 'IMMEDIATE_PAY',
@@ -207,6 +211,7 @@ class WC_PayPal_Plus_Brazil_API {
 							'postal_code'    => $order ? $order->shipping_postcode : $customer->get_shipping_postcode(),
 							'state'          => $order ? $order->shipping_state : $customer->get_shipping_state(),
 						),
+						'items'            => array(),
 					),
 				),
 			),
@@ -215,6 +220,36 @@ class WC_PayPal_Plus_Brazil_API {
 				'cancel_url' => home_url(),
 			),
 		);
+
+		// Add cart items to request data
+		$items = $order ? $order->get_items() : $cart->get_cart();
+		foreach ( $items as $item ) {
+			$product   = new WC_Product( $item['variation_id'] ? $item['variation_id'] : $item['product_id'] );
+			$item_data = array(
+				'sku'      => $product->get_id(),
+				'name'     => $product->get_title(),
+				'quantity' => $order ? $item['qty'] : $item['quantity'],
+				'price'    => $this->money_format( $order ? $item['line_subtotal'] / $item['qty'] : $item['line_subtotal'] / $item['quantity'] ),
+				'currency' => 'BRL',
+				'url'      => $product->get_permalink(),
+			);
+
+			$data['transactions'][0]['item_list']['items'][] = $item_data;
+		}
+
+		// If order has discount, add this as a item
+		$has_discount = $order ? $order->get_total_discount() : $cart->has_discount();
+		if ( $has_discount ) {
+			$discount = $order ? $order->get_total_discount() : $cart->discount_cart;
+
+			$data['transactions'][0]['item_list']['items'][] = array(
+				'sku'      => 'discount',
+				'name'     => __( 'Discount', 'woo-paypal-pluz-brazil' ),
+				'quantity' => 1,
+				'price'    => $this->money_format( $discount * - 1 ),
+				'currency' => 'BRL',
+			);
+		}
 
 		$response = $this->do_request_bearer( $url, 'POST', $data );
 
