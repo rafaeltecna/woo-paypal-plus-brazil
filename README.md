@@ -16,7 +16,9 @@ A sua experiência de checkout com a segurança do PayPal. O pagamento é feito 
 
 ### Atenção ###
 
-Para utilização do PayPal Plus você precisa de uma autorização especial. Acesse a [landing page](https://www.paypal.com/br/webapps/mpp/paypal-payments-pro) para obter mais informações.
+* Para utilização do PayPal Plus você precisa de uma autorização especial. Acesse a [landing page](https://www.paypal.com/br/webapps/mpp/paypal-payments-pro) para obter mais informações.
+* Ainda não funciona trabalhar com taxas e impostos. Em breve será implementado o recurso.
+* Ainda não funciona reembolso. Será implementado em breve.
 
 ### Compatibilidade ###
 

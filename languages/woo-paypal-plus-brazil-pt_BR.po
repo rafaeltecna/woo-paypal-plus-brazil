@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Woo Paypal Plus Brazil 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-paypal-plus-"
 "brazil\n"
-"POT-Creation-Date: 2016-08-02 18:22-0300\n"
-"PO-Revision-Date: 2016-08-02 18:23-0300\n"
+"POT-Creation-Date: 2016-08-03 18:30-0300\n"
+"PO-Revision-Date: 2016-08-03 18:30-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -92,6 +92,10 @@ msgstr "Ativar WooCommerce"
 #: includes/admin/views/html-notice-missing-woocommerce.php:27
 msgid "Install WooCommerce"
 msgstr "Instalar WooCommerce"
+
+#: includes/class-wc-paypal-plus-brazil-api.php:247
+msgid "Discount"
+msgstr "Desconto"
 
 #: includes/class-wc-paypal-plus-brazil-gateway.php:21
 msgid "PayPal Plus Brazil"
