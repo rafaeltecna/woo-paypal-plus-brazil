@@ -3,7 +3,7 @@
  * Plugin Name: Woo PayPal Plus Brazil
  * Plugin URI: https://github.com/eliasjnior/woo-paypal-plus-brazil/
  * Description: Easily enable PayPal Plus Checkout (Brazil)
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Elias Júnior
  * Author URI: https://eliasjrweb.com/
  * Requires at least: 4.4
@@ -29,7 +29,7 @@ if ( ! class_exists( 'WC_PayPay_Plus_Brazil' ) ) {
 		 *
 		 * @var string
 		 */
-		const VERSION = '1.0.0';
+		const VERSION = '1.0.1';
 
 		/**
 		 * Instance of this class.

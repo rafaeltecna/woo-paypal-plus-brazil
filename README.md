@@ -4,7 +4,7 @@
 **Tags:** paypal, plus, woocommerce, payment, transaction, credit card  
 **Requires at least:** 4.4  
 **Tested up to:** 4.5  
-**Stable tag:** 1.0.0  
+**Stable tag:** 1.0.1  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -17,7 +17,6 @@ A sua experiência de checkout com a segurança do PayPal. O pagamento é feito 
 ### Atenção ###
 
 * Para utilização do PayPal Plus você precisa de uma autorização especial. Acesse a [landing page](https://www.paypal.com/br/webapps/mpp/paypal-payments-pro) para obter mais informações.
-* Ainda não funciona trabalhar com taxas e impostos. Em breve será implementado o recurso.
 * Ainda não funciona reembolso. Será implementado em breve.
 
 ### Compatibilidade ###
@@ -126,3 +125,13 @@ Entre em contato [clicando aqui](http://wordpress.org/support/plugin/woo-paypal-
 ### 1.0.0 ###
 
 * Versão inicial do plugin.
+
+### 1.0.1 ###
+
+* Access token é salvo em transient, evitando muitas requisições.
+* Corrigido bug para versões 2.5 do WooCommerce.
+* Atualizado algumas strings.
+* Corrigido frete que não era adicionado no PayPal.
+* Adicionado suporte a impostos.
+* Atualizado informações do readme.
+* Modificado método para criar um perfil de experiência.
