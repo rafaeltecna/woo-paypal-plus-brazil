@@ -194,8 +194,9 @@ class WC_PayPal_Plus_Brazil_API {
 						'currency' => 'BRL',
 						'total'    => $this->money_format( $order ? $order->get_total() : $cart->total ),
 						'details'  => array(
-							'subtotal' => $this->money_format( $order ? $order->get_subtotal() - $order->get_total_discount() : $cart->subtotal - $cart->discount_cart ),
+							'subtotal' => $this->money_format( $order ? $order->get_subtotal() - $order->get_total_discount() : $cart->subtotal_ex_tax - $cart->discount_cart ),
 							'shipping' => $this->money_format( $order ? $order->order_shipping : $cart->shipping_total ),
+							'tax'      => $this->money_format( $order ? $order->order_shipping_tax + $order->order_tax : $cart->shipping_tax_total + $cart->tax_total ),
 						),
 					),
 					'payment_options' => array(
@@ -232,6 +233,7 @@ class WC_PayPal_Plus_Brazil_API {
 				'price'    => $this->money_format( $order ? $item['line_subtotal'] / $item['qty'] : $item['line_subtotal'] / $item['quantity'] ),
 				'currency' => 'BRL',
 				'url'      => $product->get_permalink(),
+				'tax'      => $this->money_format( $order ? $item['line_tax'] / $item['qty'] : $item['line_tax'] / $item['quantity'] ),
 			);
 
 			$data['transactions'][0]['item_list']['items'][] = $item_data;
@@ -342,9 +344,9 @@ class WC_PayPal_Plus_Brazil_API {
 	}
 
 	/**
-	 * Get Experience Profile ID.
+	 * Get Experience Profile ID or create one if don't have.
 	 *
-	 * @return string
+	 * @return mixed
 	 */
 	public function get_experience_profile_id() {
 		return $this->gateway->experience_profile_id;
