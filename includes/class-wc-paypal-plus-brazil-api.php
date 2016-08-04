@@ -246,7 +246,7 @@ class WC_PayPal_Plus_Brazil_API {
 
 			$data['transactions'][0]['item_list']['items'][] = array(
 				'sku'      => 'discount',
-				'name'     => __( 'Discount', 'woo-paypal-pluz-brazil' ),
+				'name'     => __( 'Discount', 'woo-paypal-plus-brazil' ),
 				'quantity' => 1,
 				'price'    => $this->money_format( $discount * - 1 ),
 				'currency' => 'BRL',
@@ -307,22 +307,32 @@ class WC_PayPal_Plus_Brazil_API {
 				$this->gateway->log( 'Success executing payment.' );
 				if ( $response_body['state'] === 'approved' ) {
 					$this->gateway->log( 'Payment approved.' );
-					$payment_data = array_map(
-						'sanitize_text_field',
-						array(
-							'id'          => $response_body['id'],
-							'intent'      => $response_body['intent'],
-							'state'       => $response_body['state'],
-							'cart'        => $response_body['cart'],
-							'payer'       => array(
-								'payment_method' => $response_body['payer']['payment_method'],
-								'status'         => $response_body['payer']['status'],
-							),
-							'create_time' => $response_body['create_time'],
-						)
+					$payment_data = array(
+						'id'          => $response_body['id'],
+						'intent'      => $response_body['intent'],
+						'state'       => $response_body['state'],
+						'cart'        => $response_body['cart'],
+						'payer'       => array(
+							'payment_method' => $response_body['payer']['payment_method'],
+							'status'         => $response_body['payer']['status'],
+						),
+						'sale'        => array(
+							'id'                          => $response_body['transactions'][0]['related_resources'][0]['sale']['id'],
+							'state'                       => $response_body['transactions'][0]['related_resources'][0]['sale']['state'],
+							'payment_mode'                => $response_body['transactions'][0]['related_resources'][0]['sale']['payment_mode'],
+							'protection_eligibility'      => $response_body['transactions'][0]['related_resources'][0]['sale']['protection_eligibility'],
+							'protection_eligibility_type' => $response_body['transactions'][0]['related_resources'][0]['sale']['protection_eligibility_type'],
+							'transaction_fee'             => $response_body['transactions'][0]['related_resources'][0]['sale']['transaction_fee']['value'],
+						),
+						'create_time' => $response_body['create_time'],
 					);
 					update_post_meta( $order->id, '_wc_paypal_plus_payment_data', $payment_data );
 					update_post_meta( $order->id, '_wc_paypal_plus_payment_id', $payment_data['id'] );
+					update_post_meta( $order->id, '_wc_paypal_plus_payment_sale_id', $payment_data['sale']['id'] );
+					update_post_meta( $order->id, '_wc_paypal_plus_payment_sale_fee', $payment_data['sale']['transaction_fee'] );
+					if ( 'yes' == $this->gateway->sandbox ) {
+						update_post_meta( $order->id, '_wc_paypal_plus_payment_sandbox', 'yes' );
+					}
 					if ( $user_id = $order->get_user_id() ) {
 						update_user_meta( $user_id, 'paypal_plus_remembered_cards', $remembercards );
 					}

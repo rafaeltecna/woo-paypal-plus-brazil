@@ -58,6 +58,9 @@ if ( ! class_exists( 'WC_PayPay_Plus_Brazil' ) ) {
 				if ( is_admin() ) {
 					add_action( 'admin_notices', array( $this, 'ecfb_missing_notice' ) );
 				}
+
+				WC_PayPal_Plus_Brazil_Order_Info::get_instance();
+
 			} else {
 				add_action( 'admin_notices', array( $this, 'woocommerce_missing_notice' ) );
 			}
@@ -113,6 +116,7 @@ if ( ! class_exists( 'WC_PayPay_Plus_Brazil' ) ) {
 		private function includes() {
 			include_once dirname( __FILE__ ) . '/includes/class-wc-paypal-plus-brazil-gateway.php';
 			include_once dirname( __FILE__ ) . '/includes/class-wc-paypal-plus-brazil-api.php';
+			include_once dirname( __FILE__ ) . '/includes/class-wc-paypal-plus-brazil-order-info.php';
 		}
 
 		/**

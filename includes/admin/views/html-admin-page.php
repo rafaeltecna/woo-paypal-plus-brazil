@@ -16,11 +16,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php if ( isset( $_SESSION['woo-paypal-plus-brazil-notice'] ) ): ?>
 	<?php if ( $_SESSION['woo-paypal-plus-brazil-notice'] == 'success_experience_profile_id' ): ?>
 		<div class="updated inline">
-			<p><?php echo __( 'Success creating experience profile ID', 'woo-paypal-pluz-brazil' ); ?></p>
+			<p><?php echo __( 'Success creating experience profile ID', 'woo-paypal-plus-brazil' ); ?></p>
 		</div>
 	<?php else: ?>
 		<div class="error inline">
-			<p><?php echo __( 'Error trying to create experience profile ID.', 'woo-paypal-pluz-brazil' ); ?></p>
+			<p><?php echo __( 'Error trying to create experience profile ID.', 'woo-paypal-plus-brazil' ); ?></p>
 		</div>
 	<?php endif; ?>
 	<?php unset( $_SESSION['woo-paypal-plus-brazil-notice'] ); ?>
