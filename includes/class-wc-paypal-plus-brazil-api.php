@@ -342,37 +342,12 @@ class WC_PayPal_Plus_Brazil_API {
 	}
 
 	/**
-	 * Get Experience Profile ID or create one if don't have.
+	 * Get Experience Profile ID.
 	 *
-	 * @return mixed
+	 * @return string
 	 */
 	public function get_experience_profile_id() {
-		$experience_profile_id = $this->gateway->experience_profile_id;
-		if ( ! $experience_profile_id ) {
-			$hash     = hash( 'md5', home_url( '/' ) . time() );
-			$response = $this->create_web_experience( array( 'name' => $hash ) );
-			if ( $response ) {
-				$this->update_experience_profile_id( $response['id'] );
-
-				return $response['id'];
-			}
-		}
-
-		return $experience_profile_id;
-	}
-
-	/**
-	 * Update profile id in options.
-	 *
-	 * @param $profile_id
-	 *
-	 * @return bool
-	 */
-	public function update_experience_profile_id( $profile_id ) {
-		$options                          = get_option( $this->gateway->get_option_key() );
-		$options['experience_profile_id'] = $profile_id;
-
-		return update_option( $this->gateway->get_option_key(), apply_filters( 'woocommerce_settings_api_sanitized_fields_' . $this->gateway->id, $options ) );
+		return $this->gateway->experience_profile_id;
 	}
 
 	/**

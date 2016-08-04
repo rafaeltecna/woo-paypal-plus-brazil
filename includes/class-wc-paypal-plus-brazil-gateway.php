@@ -47,8 +47,26 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 		$this->api = new WC_PayPal_Plus_Brazil_API( $this );
 
 		// Main actions.
+		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'get_experience_profile_id' ) );
 		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'checkout_scripts' ) );
+	}
+
+	/**
+	 * Get experience profile ID after save settings.
+	 */
+	public function get_experience_profile_id() {
+		$experience_profile_id_key = $this->get_field_key( 'experience_profile_id' );
+		if ( isset( $_POST[ $experience_profile_id_key ] ) && $_POST[ $experience_profile_id_key ] == '' ) {
+			$hash     = hash( 'md5', home_url( '/' ) . time() );
+			$response = $this->api->create_web_experience( array( 'name' => $hash ) );
+			if ( $response ) {
+				$_POST[ $experience_profile_id_key ]       = $response['id'];
+				$_SESSION['woo-paypal-plus-brazil-notice'] = 'success_experience_profile_id';
+			} else {
+				$_SESSION['woo-paypal-plus-brazil-notice'] = 'error_experience_profile_id';
+			}
+		}
 	}
 
 	/**
@@ -69,7 +87,7 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 	 */
 	public function is_available() {
 		// Test if is valid for use.
-		$available = 'yes' === $this->get_option( 'enabled' ) && '' !== $this->client_secret && '' !== $this->client_id && $this->using_supported_currency();
+		$available = 'yes' === $this->get_option( 'enabled' ) && '' !== $this->client_secret && '' !== $this->experience_profile_id && '' !== $this->client_id && $this->using_supported_currency();
 
 		return $available;
 	}
