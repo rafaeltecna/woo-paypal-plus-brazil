@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Woo Paypal Plus Brazil 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-paypal-plus-"
 "brazil\n"
-"POT-Creation-Date: 2016-08-04 11:33-0300\n"
-"PO-Revision-Date: 2016-08-04 11:34-0300\n"
+"POT-Creation-Date: 2016-08-04 11:38-0300\n"
+"PO-Revision-Date: 2016-08-04 11:38-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -127,8 +127,8 @@ msgid "Confirm payment"
 msgstr "Confirmar pagamento"
 
 #: includes/class-wc-paypal-plus-brazil-gateway.php:142
-msgid "Loading PayPal..."
-msgstr "Carregando PayPal..."
+msgid "Loading..."
+msgstr "Carregando..."
 
 #: includes/class-wc-paypal-plus-brazil-gateway.php:143
 msgid ""
@@ -319,6 +319,9 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://eliasjrweb.com/"
 msgstr ""
+
+#~ msgid "Loading PayPal..."
+#~ msgstr "Carregando PayPal..."
 
 #~ msgid "PayPal Plus"
 #~ msgstr "PayPal Plus"

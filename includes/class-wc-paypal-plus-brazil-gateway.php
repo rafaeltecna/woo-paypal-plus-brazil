@@ -139,7 +139,7 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 						'remembered_cards'          => $this->get_customer_cards(),
 						'paypal_loading_bg_color'   => $this->filter_hex_color( $this->get_option( 'loading_bg_color' ) ),
 						'paypal_loading_bg_opacity' => $this->filter_opacity( $this->get_option( 'loading_bg_opacity' ) ),
-						'paypal_loading_message'    => __( 'Loading PayPal...', 'woo-paypal-plus-brazil' ),
+						'paypal_loading_message'    => __( 'Loading...', 'woo-paypal-plus-brazil' ),
 						'paypal_plus_not_available' => __( 'PayPal Plus is not active for this PayPal account. Please contact us and try another payment method.', 'woo-paypal-plus-brazil' ),
 						'check_entry'               => __( 'Please fill all required fields.', 'woo-paypal-plus-brazil' ),
 						'unknown_error'             => __( 'Unknown error. Please contact us and try another payment method.', 'woo-paypal-plus-brazil' ),
