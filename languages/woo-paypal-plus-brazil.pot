@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Woo PayPal Plus Brazil 1.0.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/woo-paypal-plus-brazil\n"
-"POT-Creation-Date: 2016-08-03 21:30:13+00:00\n"
+"POT-Creation-Date: 2016-08-04 14:33:08+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -40,9 +40,18 @@ msgid ""
 "this before using."
 msgstr ""
 
+#: includes/admin/views/html-admin-page.php:19
+msgid "Success creating experience profile ID"
+msgstr ""
+
+#: includes/admin/views/html-admin-page.php:23
+msgid "Error trying to create experience profile ID."
+msgstr ""
+
 #: includes/admin/views/html-notice-client-id-missing.php:11
 #: includes/admin/views/html-notice-client-secret-missing.php:11
 #: includes/admin/views/html-notice-currency-not-supported.php:11
+#: includes/admin/views/html-notice-experience-profile-id.php:11
 msgid "PayPal Plus Brazil Disabled"
 msgstr ""
 
@@ -56,6 +65,12 @@ msgstr ""
 
 #: includes/admin/views/html-notice-currency-not-supported.php:11
 msgid "Currency <code>%s</code> is not supported. Works only with Brazilian Real."
+msgstr ""
+
+#: includes/admin/views/html-notice-experience-profile-id.php:11
+msgid ""
+"No experience profile id. Check client id and client secret and then save "
+"settings to create a new experience profile."
 msgstr ""
 
 #: includes/admin/views/html-notice-missing-ecfb.php:16
@@ -98,145 +113,145 @@ msgstr ""
 msgid "Confirm payment"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:98
+#: includes/class-wc-paypal-plus-brazil-gateway.php:142
 msgid "Loading PayPal..."
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:99
+#: includes/class-wc-paypal-plus-brazil-gateway.php:143
 msgid ""
 "PayPal Plus is not active for this PayPal account. Please contact us and "
 "try another payment method."
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:100
+#: includes/class-wc-paypal-plus-brazil-gateway.php:144
 msgid "Please fill all required fields."
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:101
+#: includes/class-wc-paypal-plus-brazil-gateway.php:145
 msgid "Unknown error. Please contact us and try another payment method."
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:102
+#: includes/class-wc-paypal-plus-brazil-gateway.php:146
 msgid ""
 "Unknown error in PayPal response. Please contact us and try another payment "
 "method."
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:116
+#: includes/class-wc-paypal-plus-brazil-gateway.php:160
 msgid "System Status &gt; Logs"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:128
+#: includes/class-wc-paypal-plus-brazil-gateway.php:172
 msgid "Enable/Disable"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:130
+#: includes/class-wc-paypal-plus-brazil-gateway.php:174
 msgid "Enable PayPal Plus Brazil"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:134
+#: includes/class-wc-paypal-plus-brazil-gateway.php:178
 msgid "Title"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:136
+#: includes/class-wc-paypal-plus-brazil-gateway.php:180
 msgid "This controls the title which the user sees during checkout."
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:138
+#: includes/class-wc-paypal-plus-brazil-gateway.php:182
 msgid "Credit card"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:141
+#: includes/class-wc-paypal-plus-brazil-gateway.php:185
 msgid "Description"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:143
+#: includes/class-wc-paypal-plus-brazil-gateway.php:187
 msgid "This controls the description which the user sees during checkout."
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:144
+#: includes/class-wc-paypal-plus-brazil-gateway.php:188
 msgid "Use your credit card to checkout."
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:147
+#: includes/class-wc-paypal-plus-brazil-gateway.php:191
 msgid "PayPal Plus Sandbox"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:149
+#: includes/class-wc-paypal-plus-brazil-gateway.php:193
 msgid "Enable PayPal Plus Sandbox"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:152
+#: includes/class-wc-paypal-plus-brazil-gateway.php:196
 msgid "PayPal Plus Sandbox can be used to test the payments."
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:155
+#: includes/class-wc-paypal-plus-brazil-gateway.php:199
 msgid "PayPal Plus Client ID"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:157
+#: includes/class-wc-paypal-plus-brazil-gateway.php:201
 msgid "Please enter your PayPal Plus client ID."
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:161
+#: includes/class-wc-paypal-plus-brazil-gateway.php:205
 msgid "PayPal Plus Client Secret"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:163
+#: includes/class-wc-paypal-plus-brazil-gateway.php:207
 msgid "Please enter your PayPal Plus Client Secret."
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:167
+#: includes/class-wc-paypal-plus-brazil-gateway.php:211
 msgid "PayPal Plus Experience Profile ID"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:169
+#: includes/class-wc-paypal-plus-brazil-gateway.php:213
 msgid ""
 "Please enter your PayPal Plus Experience Profile ID. Leave empty if you "
 "don't have, the API will get one."
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:173
+#: includes/class-wc-paypal-plus-brazil-gateway.php:217
 msgid "Design"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:178
+#: includes/class-wc-paypal-plus-brazil-gateway.php:222
 msgid "Loading background color"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:180
+#: includes/class-wc-paypal-plus-brazil-gateway.php:224
 msgid "Please enter hex color to loading background. Eg.: #CCCCCC"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:184
+#: includes/class-wc-paypal-plus-brazil-gateway.php:228
 msgid "Loading background opacity"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:186
+#: includes/class-wc-paypal-plus-brazil-gateway.php:230
 msgid "Please enter a percentage value to background opacity. Eg.: 50%."
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:190
+#: includes/class-wc-paypal-plus-brazil-gateway.php:234
 msgid "Gateway Testing"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:195
+#: includes/class-wc-paypal-plus-brazil-gateway.php:239
 msgid "Debug Log"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:197
+#: includes/class-wc-paypal-plus-brazil-gateway.php:241
 msgid "Enable logging"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:199
+#: includes/class-wc-paypal-plus-brazil-gateway.php:243
 msgid "Log PayPal Plus Brazil events, such as API requests, inside %s"
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:270
+#: includes/class-wc-paypal-plus-brazil-gateway.php:314
 msgid "Missing PayPal payment data."
 msgstr ""
 
-#: includes/class-wc-paypal-plus-brazil-gateway.php:282
+#: includes/class-wc-paypal-plus-brazil-gateway.php:326
 msgid "Could not execute the payment."
 msgstr ""
 
