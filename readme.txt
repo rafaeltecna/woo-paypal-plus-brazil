@@ -114,7 +114,7 @@ Entre em contato [clicando aqui](http://wordpress.org/support/plugin/woo-paypal-
 
 * Versão inicial do plugin.
 
-= 1.0.1 =
+= 1.0.1 - 2016/08/04 =
 
 * Access token é salvo em transient, evitando muitas requisições.
 * Corrigido bug para versões 2.5 do WooCommerce.
