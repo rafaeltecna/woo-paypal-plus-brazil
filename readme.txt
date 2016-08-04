@@ -114,6 +114,16 @@ Entre em contato [clicando aqui](http://wordpress.org/support/plugin/woo-paypal-
 
 * Versão inicial do plugin.
 
+= 1.0.1 =
+
+* Access token é salvo em transient, evitando muitas requisições.
+* Corrigido bug para versões 2.5 do WooCommerce.
+* Atualizado algumas strings.
+* Corrigido frete que não era adicionado no PayPal.
+* Adicionado suporte a impostos.
+* Atualizado informações do readme.
+* Modificado método para criar um perfil de experiência.
+
 == Upgrade Notice ==
 
 = 1.0.0 =
