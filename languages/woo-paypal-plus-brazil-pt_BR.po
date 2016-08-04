@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Woo Paypal Plus Brazil 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-paypal-plus-"
 "brazil\n"
-"POT-Creation-Date: 2016-08-04 11:38-0300\n"
-"PO-Revision-Date: 2016-08-04 11:38-0300\n"
+"POT-Creation-Date: 2016-08-04 15:31-0300\n"
+"PO-Revision-Date: 2016-08-04 15:31-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -37,6 +37,26 @@ msgstr "Fazer uma doação"
 #: includes/admin/views/html-admin-help-message.php:11
 msgid "Make a review"
 msgstr "Fazer uma avaliação"
+
+#: includes/admin/views/html-admin-order-info.php:11
+msgid "Sale:"
+msgstr "Venda:"
+
+#: includes/admin/views/html-admin-order-info.php:12
+msgid "Sale fee:"
+msgstr "Taxa de venda:"
+
+#: includes/admin/views/html-admin-order-info.php:14
+msgid "Sandbox:"
+msgstr "Sandbox:"
+
+#: includes/admin/views/html-admin-order-info.php:14
+msgid "yes"
+msgstr "sim"
+
+#: includes/admin/views/html-admin-order-info.php:16
+msgid "Print details"
+msgstr "Imprimir detalhes"
 
 #: includes/admin/views/html-admin-page.php:13
 msgid ""
@@ -110,11 +130,12 @@ msgstr "Ativar WooCommerce"
 msgid "Install WooCommerce"
 msgstr "Instalar WooCommerce"
 
-#: includes/class-wc-paypal-plus-brazil-api.php:247
+#: includes/class-wc-paypal-plus-brazil-api.php:249
 msgid "Discount"
 msgstr "Desconto"
 
 #: includes/class-wc-paypal-plus-brazil-gateway.php:21
+#: includes/class-wc-paypal-plus-brazil-order-info.php:51
 msgid "PayPal Plus Brazil"
 msgstr "PayPal Plus Brasil"
 
@@ -296,7 +317,7 @@ msgstr "Clique aqui"
 msgid "in case you already filled everything."
 msgstr "caso você já tenha preenchido tudo."
 
-#: woo-paypal-plus-brazil.php:105
+#: woo-paypal-plus-brazil.php:108
 msgid "Settings"
 msgstr "Configurações"
 
