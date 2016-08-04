@@ -4,7 +4,7 @@ Donate link: http://eliasjrweb.com/donate/
 Tags: paypal, plus, woocommerce, payment, transaction, credit card
 Requires at least: 4.4
 Tested up to: 4.5
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -124,6 +124,10 @@ Entre em contato [clicando aqui](http://wordpress.org/support/plugin/woo-paypal-
 * Atualizado informações do readme.
 * Modificado método para criar um perfil de experiência.
 
+= 1.0.2 - 2016/08/04 =
+
+* Adicionado detalhes do pedido para o administrador.
+
 == Upgrade Notice ==
 
 = 1.0.0 =
@@ -139,3 +143,7 @@ Entre em contato [clicando aqui](http://wordpress.org/support/plugin/woo-paypal-
 * Adicionado suporte a impostos.
 * Atualizado informações do readme.
 * Modificado método para criar um perfil de experiência.
+
+= 1.0.2 =
+
+* Adicionado detalhes do pedido para o administrador.
