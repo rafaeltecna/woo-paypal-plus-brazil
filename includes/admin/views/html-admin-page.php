@@ -37,6 +37,9 @@ if ( 'yes' == $this->get_option( 'enabled' ) ) {
 	if ( '' === $this->client_secret ) {
 		include dirname( __FILE__ ) . '/html-notice-client-secret-missing.php';
 	}
+	if ( '' === $this->experience_profile_id ) {
+		include dirname( __FILE__ ) . '/html-notice-experience-profile-id.php';
+	}
 }
 ?>
 

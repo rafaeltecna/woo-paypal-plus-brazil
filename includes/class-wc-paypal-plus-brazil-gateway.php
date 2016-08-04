@@ -47,6 +47,7 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 		$this->api = new WC_PayPal_Plus_Brazil_API( $this );
 
 		// Main actions.
+		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'remove_transient' ) );
 		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'get_experience_profile_id' ) );
 		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'checkout_scripts' ) );
@@ -56,6 +57,18 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 	 * Get experience profile ID after save settings.
 	 */
 	public function get_experience_profile_id() {
+		// First check if client id and client secret is posted
+		$client_id_key     = $this->get_field_key( 'client_id' );
+		$client_secret_key = $this->get_field_key( 'client_secret' );
+		if ( isset( $_POST[ $client_id_key ] ) && isset( $_POST[ $client_secret_key ] ) ) {
+			$this->client_id     = $_POST[ $client_id_key ];
+			$this->client_secret = $_POST[ $client_secret_key ];
+		} else {
+			// Don't try to get without access token
+			return;
+		}
+
+		// If empty experience profile id, get a new one
 		$experience_profile_id_key = $this->get_field_key( 'experience_profile_id' );
 		if ( isset( $_POST[ $experience_profile_id_key ] ) && $_POST[ $experience_profile_id_key ] == '' ) {
 			$hash     = hash( 'md5', home_url( '/' ) . time() );
@@ -66,6 +79,19 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 			} else {
 				$_SESSION['woo-paypal-plus-brazil-notice'] = 'error_experience_profile_id';
 			}
+		}
+	}
+
+	/**
+	 * Remove transients after save settings.
+	 */
+	public function remove_transient() {
+		$old_client_id     = $this->client_id;
+		$old_client_secret = $this->client_secret;
+		$new_client_id     = $_POST[ $this->get_field_key( 'client_id' ) ];
+		$new_client_secret = $_POST[ $this->get_field_key( 'client_secret' ) ];
+		if ( ( $old_client_id != $new_client_id ) || ( $old_client_secret != $new_client_secret ) ) {
+			delete_transient( 'woo_paypal_plus_brazil_access_token' );
 		}
 	}
 
