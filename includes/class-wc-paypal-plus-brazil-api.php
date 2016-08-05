@@ -305,7 +305,7 @@ class WC_PayPal_Plus_Brazil_API {
 
 			if ( 200 == $response['response']['code'] ) {
 				$this->gateway->log( 'Success executing payment.' );
-				if ( $response_body['state'] === 'approved' ) {
+				if ( $response_body['transactions'][0]['related_resources'][0]['sale']['state'] === 'completed' ) {
 					$this->gateway->log( 'Payment approved.' );
 					$payment_data = array(
 						'id'          => $response_body['id'],
@@ -339,7 +339,7 @@ class WC_PayPal_Plus_Brazil_API {
 
 					return $response_body;
 				} else {
-					$this->gateway->log( 'The payment could not be processed.' );
+					$this->gateway->log( 'The payment could not be processed. Status: ' . $response_body['transactions'][0]['related_resources'][0]['sale']['state'] );
 				}
 			} else if ( 401 === $response['response']['code'] ) {
 				$this->gateway->log( 'Failed to authenticate with the cretentials.' );
