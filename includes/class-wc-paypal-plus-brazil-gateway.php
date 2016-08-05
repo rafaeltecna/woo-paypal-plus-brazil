@@ -319,9 +319,15 @@ class WC_PayPal_Plus_Brazil_Gateway extends WC_Payment_Gateway {
 			$execute       = $this->api->process_payment( $order, $payment_id, $payer_id, $remembercards );
 
 			// Check if success.
-			if ( $execute ) {
+			if ( $execute['status'] === 'completed' ) {
 				$result['result'] = 'success';
 				$order->payment_complete();
+			} else if ( $execute['status'] === 'denied' ) {
+				$order->update_status( 'failed', __( 'Payment denied.', 'woo-paypal-plus-brazil' ) );
+			} else if ( $execute['status'] === 'pending' ) {
+				$result['result'] = 'success';
+				$order->reduce_order_stock();
+				$order->update_status( 'on-hold', __( 'Waiting payment confirmation.', 'woo-paypal-plus-brazil' ) );
 			} else {
 				$order->update_status( 'failed', __( 'Could not execute the payment.', 'woo-paypal-plus-brazil' ) );
 			}

@@ -305,41 +305,64 @@ class WC_PayPal_Plus_Brazil_API {
 
 			if ( 200 == $response['response']['code'] ) {
 				$this->gateway->log( 'Success executing payment.' );
-				if ( $response_body['transactions'][0]['related_resources'][0]['sale']['state'] === 'completed' ) {
-					$this->gateway->log( 'Payment approved.' );
-					$payment_data = array(
-						'id'          => $response_body['id'],
-						'intent'      => $response_body['intent'],
-						'state'       => $response_body['state'],
-						'cart'        => $response_body['cart'],
-						'payer'       => array(
-							'payment_method' => $response_body['payer']['payment_method'],
-							'status'         => $response_body['payer']['status'],
-						),
-						'sale'        => array(
-							'id'                          => $response_body['transactions'][0]['related_resources'][0]['sale']['id'],
-							'state'                       => $response_body['transactions'][0]['related_resources'][0]['sale']['state'],
-							'payment_mode'                => $response_body['transactions'][0]['related_resources'][0]['sale']['payment_mode'],
-							'protection_eligibility'      => $response_body['transactions'][0]['related_resources'][0]['sale']['protection_eligibility'],
-							'protection_eligibility_type' => $response_body['transactions'][0]['related_resources'][0]['sale']['protection_eligibility_type'],
-							'transaction_fee'             => $response_body['transactions'][0]['related_resources'][0]['sale']['transaction_fee']['value'],
-						),
-						'create_time' => $response_body['create_time'],
-					);
-					update_post_meta( $order->id, '_wc_paypal_plus_payment_data', $payment_data );
-					update_post_meta( $order->id, '_wc_paypal_plus_payment_id', $payment_data['id'] );
-					update_post_meta( $order->id, '_wc_paypal_plus_payment_sale_id', $payment_data['sale']['id'] );
-					update_post_meta( $order->id, '_wc_paypal_plus_payment_sale_fee', $payment_data['sale']['transaction_fee'] );
-					if ( 'yes' == $this->gateway->sandbox ) {
-						update_post_meta( $order->id, '_wc_paypal_plus_payment_sandbox', 'yes' );
-					}
-					if ( $user_id = $order->get_user_id() ) {
-						update_user_meta( $user_id, 'paypal_plus_remembered_cards', $remembercards );
-					}
+				$payment_state = $response_body['transactions'][0]['related_resources'][0]['sale']['state'];
+				$payment_data  = array(
+					'id'          => $response_body['id'],
+					'intent'      => $response_body['intent'],
+					'state'       => $response_body['state'],
+					'cart'        => $response_body['cart'],
+					'payer'       => array(
+						'payment_method' => $response_body['payer']['payment_method'],
+						'status'         => $response_body['payer']['status'],
+					),
+					'sale'        => array(
+						'id'                          => $response_body['transactions'][0]['related_resources'][0]['sale']['id'],
+						'state'                       => $response_body['transactions'][0]['related_resources'][0]['sale']['state'],
+						'payment_mode'                => $response_body['transactions'][0]['related_resources'][0]['sale']['payment_mode'],
+						'protection_eligibility'      => $response_body['transactions'][0]['related_resources'][0]['sale']['protection_eligibility'],
+						'protection_eligibility_type' => $response_body['transactions'][0]['related_resources'][0]['sale']['protection_eligibility_type'],
+						'transaction_fee'             => $response_body['transactions'][0]['related_resources'][0]['sale']['transaction_fee']['value'],
+					),
+					'create_time' => $response_body['create_time'],
+				);
+				update_post_meta( $order->id, '_wc_paypal_plus_payment_data', $payment_data );
+				update_post_meta( $order->id, '_wc_paypal_plus_payment_id', $payment_data['id'] );
+				update_post_meta( $order->id, '_wc_paypal_plus_payment_sale_id', $payment_data['sale']['id'] );
+				update_post_meta( $order->id, '_wc_paypal_plus_payment_sale_fee', $payment_data['sale']['transaction_fee'] );
+				if ( 'yes' == $this->gateway->sandbox ) {
+					update_post_meta( $order->id, '_wc_paypal_plus_payment_sandbox', 'yes' );
+				}
+				if ( $user_id = $order->get_user_id() ) {
+					update_user_meta( $user_id, 'paypal_plus_remembered_cards', $remembercards );
+				}
+				if ( $payment_state === 'completed' ) {
+					$this->gateway->log( 'Payment completed.' );
 
-					return $response_body;
+					return array(
+						'status' => 'completed',
+						'data'   => $response_body,
+					);
+				} else if ( $payment_state === 'pending' ) {
+					$this->gateway->log( 'Payment is pending.' );
+
+					return array(
+						'status' => 'pending',
+						'data'   => '',
+					);
+				} else if ( $payment_state === 'denied' ) {
+					$this->gateway->log( 'Payment was denied.' );
+
+					return array(
+						'status' => 'denied',
+						'data'   => '',
+					);
 				} else {
 					$this->gateway->log( 'The payment could not be processed. Status: ' . $response_body['transactions'][0]['related_resources'][0]['sale']['state'] );
+
+					return array(
+						'status' => 'error',
+						'data'   => '',
+					);
 				}
 			} else if ( 401 === $response['response']['code'] ) {
 				$this->gateway->log( 'Failed to authenticate with the cretentials.' );
@@ -350,7 +373,10 @@ class WC_PayPal_Plus_Brazil_API {
 
 		WC()->cart->empty_cart();
 
-		return false;
+		return array(
+			'status' => 'error',
+			'data'   => '',
+		);
 	}
 
 	/**
