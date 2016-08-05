@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Woo PayPal Plus Brazil package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Woo PayPal Plus Brazil 1.0.1\n"
+"Project-Id-Version: Woo PayPal Plus Brazil 1.0.3\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/woo-paypal-plus-brazil\n"
-"POT-Creation-Date: 2016-08-04 18:30:56+00:00\n"
+"POT-Creation-Date: 2016-08-05 17:59:03+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -34,24 +34,28 @@ msgstr ""
 msgid "Make a review"
 msgstr ""
 
-#: includes/admin/views/html-admin-order-info.php:11
+#: includes/admin/views/html-admin-order-info.php:12
 msgid "Sale:"
 msgstr ""
 
-#: includes/admin/views/html-admin-order-info.php:12
+#: includes/admin/views/html-admin-order-info.php:13
 msgid "Sale fee:"
 msgstr ""
 
-#: includes/admin/views/html-admin-order-info.php:14
+#: includes/admin/views/html-admin-order-info.php:15
 msgid "Sandbox:"
 msgstr ""
 
-#: includes/admin/views/html-admin-order-info.php:14
+#: includes/admin/views/html-admin-order-info.php:15
 msgid "yes"
 msgstr ""
 
-#: includes/admin/views/html-admin-order-info.php:16
+#: includes/admin/views/html-admin-order-info.php:17
 msgid "Print details"
+msgstr ""
+
+#: includes/admin/views/html-admin-order-info.php:20
+msgid "Payment not completed yet."
 msgstr ""
 
 #: includes/admin/views/html-admin-page.php:13
@@ -273,6 +277,14 @@ msgid "Missing PayPal payment data."
 msgstr ""
 
 #: includes/class-wc-paypal-plus-brazil-gateway.php:326
+msgid "Payment denied."
+msgstr ""
+
+#: includes/class-wc-paypal-plus-brazil-gateway.php:330
+msgid "Waiting payment confirmation."
+msgstr ""
+
+#: includes/class-wc-paypal-plus-brazil-gateway.php:332
 msgid "Could not execute the payment."
 msgstr ""
 

@@ -4,7 +4,7 @@ Donate link: http://eliasjrweb.com/donate/
 Tags: paypal, plus, woocommerce, payment, transaction, credit card
 Requires at least: 4.4
 Tested up to: 4.5
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,7 +21,7 @@ A sua experiência de checkout com a segurança do PayPal. O pagamento é feito 
 
 = Compatibilidade =
 
-Compatível à partir da versão 2.2.x até a 2.6.x do WooCommerce.
+Compatível à partir da versão 2.5.x até a 2.6.x do WooCommerce.
 
 Este plugin funciona integrado com o [WooCommerce Extra Checkout Fields for Brazil](http://wordpress.org/plugins/woocommerce-extra-checkout-fields-for-brazil/), desta forma é possível enviar documentos do cliente como "CPF" ou "CNPJ", além dos campos "número" e "bairro" do endereço.
 
@@ -128,6 +128,10 @@ Entre em contato [clicando aqui](http://wordpress.org/support/plugin/woo-paypal-
 
 * Adicionado detalhes do pedido para o administrador.
 
+= 1.0.3 - 2016/08/05 =
+
+* Adicionado status "aguardando" para pedidos "em revisão" no PayPal.
+
 == Upgrade Notice ==
 
 = 1.0.0 =
@@ -147,3 +151,7 @@ Entre em contato [clicando aqui](http://wordpress.org/support/plugin/woo-paypal-
 = 1.0.2 =
 
 * Adicionado detalhes do pedido para o administrador.
+
+= 1.0.3 =
+
+* Adicionado status "aguardando" para pedidos "em revisão" no PayPal.
